@@ -12,9 +12,9 @@ public class Task3 {
         int[] array = new int[]{0, 1, 2, 3};
         System.out.println("Исходный массив:");
         System.out.println(Arrays.toString(array));
-        int step = 1;
-        int[] newArray = shifting(array, step);
-        System.out.println("Массив после сдвига на " + step + " позиций:");
+        int shift = 2;
+        int[] newArray = shifting(array, shift);
+        System.out.println("Массив после сдвига на " + shift + " позиций:");
         System.out.println(Arrays.toString(newArray));
     }
 
@@ -22,17 +22,13 @@ public class Task3 {
      * Метод, сдвигающий массив на n ячеек
      *
      * @param array исходный массив
-     * @param step  шаг сдвига
+     * @param shift  шаг сдвига
      * @return возвращает сдвинутый массив int[]
      */
-    public static int[] shifting(int[] array, int step) {
+    public static int[] shifting(int[] array, int shift) {
         int[] newArray = new int[array.length];
-        int maxIndex = array.length;
         for (int i = 0; i < array.length; i++) {
-            int newIndex = i + step;
-            if (newIndex >= maxIndex) {
-                newIndex = newIndex - maxIndex;
-            }
+            int newIndex = (i + shift) % array.length;
             newArray[newIndex] = array[i];
         }
         return newArray;
